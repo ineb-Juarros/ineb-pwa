@@ -2,12 +2,6 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8"/>
-<link rel="manifest" href="manifest.json"/>
-<meta name="theme-color" content="#1b3a2d"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="apple-mobile-web-app-title" content="INEB Machs"/>
-<link rel="apple-touch-icon" href="icons/icon-192.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Consolidado — Subdirector INEB Domingo Juarros</title>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -176,25 +170,150 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
 
 
 @media print {
-  .inst-header img { height: 14mm !important; }
-  .inst-header-txt .n1 { font-size: 8px !important; }
-  .inst-header-txt .n2 { font-size: 7px !important; }
-  .enc-bloque td { padding: 1px 3px !important; font-size: 6px !important; }
-  .tabla-reporte td, .tabla-reporte th { padding: 1.5px 3px !important; font-size: 6.5px !important; }
-  .aspecto-nombre, .aspecto-pts { font-size: 6px !important; }
-  .total-num { font-size: 6.5px !important; }
-  .tr-resumen td { font-size: 6.5px !important; }
-  .app-bar, .config-panel, .stats-bar, .maestros-grid,
-  .preview-label, .hoja-label, #toast { display: none !important; }
-  .inst-header { padding: 5px 10px !important; border-bottom: 2px solid #1b3a2d !important; margin-bottom: 3mm !important; box-shadow: none !important; }
-  .linea-dorada { height: 1.5px !important; margin-bottom: 3mm !important; }
-  .main-wrap { padding: 0 !important; max-width: 100% !important; }
-  body { background: #fff !important; }
-  @page { size: A4 portrait; margin: 6mm 5mm; }
-  .hoja-impresion { box-shadow: none !important; border: none !important; padding: 0 !important; margin: 0 !important; border-radius: 0 !important; page-break-after: always !important; break-after: page !important; }
-  .hoja-impresion:last-child { page-break-after: avoid !important; break-after: avoid !important; }
-  .grid-hoja { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 3mm !important; }
+  /* ===== CONFIGURACIÓN DE PÁGINA ===== */
+  @page {
+    size: A4 portrait;
+    margin: 8mm 6mm;
+  }
+
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #fff !important; font-size: 7px !important; }
+
+  /* ===== OCULTAR UI ===== */
+  .app-bar, .config-panel, .stats-bar, .maestros-grid,
+  .preview-label, .hoja-label, #toast,
+  a[href="index.html"] { display: none !important; }
+
+  .inst-header {
+    padding: 4px 8px !important;
+    border-bottom: 2px solid #1b3a2d !important;
+    margin-bottom: 3mm !important;
+    box-shadow: none !important;
+  }
+  .inst-header img { height: 12mm !important; }
+  .inst-header-txt .n1 { font-size: 7.5px !important; line-height: 1.2 !important; }
+  .inst-header-txt .n2 { font-size: 6.5px !important; margin-top: 1px !important; }
+  .linea-dorada { height: 1px !important; margin-bottom: 2mm !important; }
+
+  .main-wrap { padding: 0 !important; max-width: 100% !important; }
+  #zona-reporte { display: block !important; }
+
+  /* ===== CADA HOJA = UNA PÁGINA ===== */
+  .hoja-impresion {
+    page-break-before: auto !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+  }
+  .hoja-impresion:last-child {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+  .hoja-label { display: none !important; }
+
+  /* ===== GRID 2 COLUMNAS EN PORTRAIT ===== */
+  .grid-hoja {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2mm 3mm !important;
+    align-items: start !important;
+    width: 100% !important;
+  }
+
+  /* ===== BLOQUE DE CADA MAESTRO ===== */
+  .bloque-maestro {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    width: 100% !important;
+    margin-bottom: 2mm !important;
+    overflow: hidden !important;
+  }
+
+  /* ===== ENCABEZADO INSTITUCIONAL EN CADA HOJA ===== */
+  .bloque-maestro > div[style*="display:flex"] {
+    padding: 3px 6px !important;
+    margin-bottom: 1mm !important;
+  }
+  .bloque-maestro img { height: 8mm !important; }
+
+  /* ===== TABLA ENCABEZADO MAESTRO ===== */
+  .enc-bloque {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-bottom: 1px !important;
+    font-size: 5.8px !important;
+    table-layout: fixed !important;
+  }
+  .enc-bloque td {
+    padding: 1px 2px !important;
+    border: 0.5px solid #666 !important;
+    line-height: 1.25 !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+  }
+  .enc-label {
+    background: #d5d5d5 !important;
+    font-weight: 700 !important;
+    font-size: 5.2px !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+  .enc-val { font-weight: 500 !important; font-size: 5.8px !important; }
+
+  /* ===== TABLA DE ACTIVIDADES ===== */
+  .tabla-reporte {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important;
+    font-size: 6px !important;
+    border: 0.75px solid #444 !important;
+    box-shadow: none !important;
+  }
+  .tabla-reporte td, .tabla-reporte th {
+    padding: 1px 2px !important;
+    border: 0.5px solid #777 !important;
+    line-height: 1.25 !important;
+    overflow: hidden !important;
+    word-break: break-word !important;
+    vertical-align: top !important;
+  }
+  .th-col {
+    font-size: 5.5px !important;
+    font-weight: 700 !important;
+    background: #ccc !important;
+    text-align: center !important;
+    padding: 1.5px 2px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Proporciones de columnas */
+  .col-num   { width: 7% !important; text-align: center !important; font-weight: 700 !important; font-size: 6px !important; }
+  .col-desc  { width: 38% !important; font-size: 6px !important; }
+  .col-asp   { width: 43% !important; font-size: 6px !important; }
+  .col-fecha { width: 12% !important; text-align: center !important; font-size: 5.5px !important; white-space: normal !important; }
+
+  .aspecto-linea { display: flex !important; justify-content: space-between !important; gap: 2px !important; }
+  .aspecto-nombre { font-size: 5.8px !important; flex: 1 !important; }
+  .aspecto-pts    { font-size: 5.8px !important; font-weight: 700 !important; white-space: nowrap !important; }
+
+  .total-linea { margin-top: 1px !important; padding-top: 1px !important; border-top: 0.5px solid #aaa !important; }
+  .total-label { font-size: 5.5px !important; }
+  .total-num   { font-size: 6px !important; font-weight: 800 !important; }
+
+  .tr-resumen td {
+    font-size: 6px !important;
+    font-weight: 700 !important;
+    background: #ddd !important;
+    padding: 1px 2px !important;
+  }
 }
 </style>
 </head>
@@ -600,22 +719,6 @@ function mostrarToast(msg) {
 function imprimir() {
   renderReporte();
   setTimeout(() => window.print(), 200);
-}
-</script>
-<a href="index.html" style="
-  position:fixed; bottom:24px; left:24px;
-  background:#1b3a2d; color:#fff;
-  padding:10px 16px; border-radius:30px;
-  font-family:sans-serif; font-size:0.82rem; font-weight:600;
-  text-decoration:none; display:flex; align-items:center; gap:7px;
-  box-shadow:0 4px 16px rgba(0,0,0,0.25); z-index:200;
-  transition:background 0.2s;" onmouseover="this.style.background='#0f2418'"
-  onmouseout="this.style.background='#1b3a2d'">
-  ‹ Inicio
-</a>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
 </script>
 </body>
