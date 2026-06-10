@@ -568,6 +568,29 @@ function renderListaMaestros() {
 }
 
 // ================================================================
+// ORDENAR MAESTROS POR GRADO (Primero, Segundo, Tercero)
+// ================================================================
+function ordenarPorGrado(lista) {
+  const orden = {
+    'primero': 1, 'primer': 1, '1ro': 1, '1°': 1, '1ero': 1,
+    'segundo': 2, '2do': 2, '2°': 2, '2do': 2,
+    'tercero': 3, 'tercer': 3, '3ro': 3, '3°': 3, '3ero': 3
+  };
+  return [...lista].sort((a, b) => {
+    const ga = (a.grado || '').toLowerCase();
+    const gb = (b.grado || '').toLowerCase();
+    let na = 99, nb = 99;
+    for (const [key, val] of Object.entries(orden)) {
+      if (ga.includes(key)) na = val;
+      if (gb.includes(key)) nb = val;
+    }
+    if (na !== nb) return na - nb;
+    // Mismo grado: ordenar por cátedra
+    return (a.catedra || '').localeCompare(b.catedra || '');
+  });
+}
+
+// ================================================================
 // RENDERIZAR REPORTE (mismo formato que el consolidado)
 // ================================================================
 function renderReporte() {
@@ -577,10 +600,13 @@ function renderReporte() {
     return;
   }
 
+  // Ordenar por grado antes de mostrar
+  const maestrosOrdenados = ordenarPorGrado(maestros);
+
   // Padding: rellenar hasta múltiplo de POR_HOJA con slots vacíos
-  const total = maestros.length;
+  const total = maestrosOrdenados.length;
   const hojas = Math.ceil(total / POR_HOJA);
-  const padded = [...maestros];
+  const padded = [...maestrosOrdenados];
   while (padded.length < hojas * POR_HOJA) padded.push(null);
 
   let html = '';
