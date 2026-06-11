@@ -349,8 +349,8 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
 <div class="config-panel">
   <div>
     <label>🔗 URL de tu Google Apps Script (cópiala aquí)</label>
-    <input type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/XXXXXXX/exec"
-           oninput="guardarConfig()"/>
+    <input type="text" id="scriptUrl" value="https://script.google.com/macros/s/AKfycbwZngvEtFwgQZLjCQsYDPuFHoMSchdkU9BiqGwt5RLE2TAWyEUjLp2LUmgNBOcMyxCiiA/exec"
+           oninput="guardarConfig()" style="color:#1b3a2d;font-weight:600"/>
     <div class="config-note">Pega aquí la URL que obtuviste al publicar el Apps Script. Luego comparte este archivo y el formulario del maestro.</div>
   </div>
   <button class="btn-bar btn-bar-verde" onclick="cargarDatos()" style="height:38px;padding:0 18px">🔄 Actualizar datos</button>
@@ -414,11 +414,19 @@ let maestros = [];
 window.addEventListener('DOMContentLoaded', () => {
   // Cargar config
   const cfg = JSON.parse(localStorage.getItem(CONFIG_KEY) || '{}');
-  if (cfg.scriptUrl) document.getElementById('scriptUrl').value = cfg.scriptUrl;
+  if (cfg.scriptUrl) {
+    document.getElementById('scriptUrl').value = cfg.scriptUrl;
+  } else {
+    // URL pre-configurada por defecto
+    document.getElementById('scriptUrl').value = 'https://script.google.com/macros/s/AKfycbwZngvEtFwgQZLjCQsYDPuFHoMSchdkU9BiqGwt5RLE2TAWyEUjLp2LUmgNBOcMyxCiiA/exec';
+  }
 
   // Cargar datos guardados
   cargarDeStorage();
   renderUI();
+
+  // Cargar datos del servidor automáticamente al abrir
+  setTimeout(() => cargarDatos(true), 1500);
 
   // Auto-actualizar cada 60 segundos si hay URL
   // El auto-refresh es silencioso y hace merge (no borra datos locales)
