@@ -172,12 +172,12 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
 @media print {
   /* ===== CONFIGURACIÓN DE PÁGINA ===== */
   @page {
-    size: A4 portrait;
-    margin: 8mm 6mm;
+    size: A4 landscape;
+    margin: 6mm 5mm;
   }
 
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { background: #fff !important; font-size: 10pt !important; }
+  body { background: #fff !important; font-size: 8pt !important; }
 
   /* ===== OCULTAR UI ===== */
   .app-bar, .config-panel, .stats-bar, .maestros-grid,
@@ -215,7 +215,7 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     grid-template-rows: auto auto !important;
-    gap: 4mm 4mm !important;
+    gap: 3mm 5mm !important;
     align-items: start !important;
     width: 100% !important;
   }
@@ -241,7 +241,7 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
     width: 100% !important;
     border-collapse: collapse !important;
     margin-bottom: 1px !important;
-    font-size: 10pt !important;
+    font-size: 8pt !important;
     table-layout: fixed !important;
   }
   .enc-bloque td {
@@ -254,18 +254,18 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
   .enc-label {
     background: #d5d5d5 !important;
     font-weight: 700 !important;
-    font-size: 10pt !important;
+    font-size: 8pt !important;
     text-transform: uppercase !important;
     white-space: nowrap !important;
   }
-  .enc-val { font-weight: 500 !important; font-size: 10pt !important; }
+  .enc-val { font-weight: 500 !important; font-size: 8pt !important; }
 
   /* ===== TABLA DE ACTIVIDADES ===== */
   .tabla-reporte {
     width: 100% !important;
     border-collapse: collapse !important;
     table-layout: fixed !important;
-    font-size: 10pt !important;
+    font-size: 8pt !important;
     border: 0.75px solid #444 !important;
     box-shadow: none !important;
   }
@@ -278,7 +278,7 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
     vertical-align: top !important;
   }
   .th-col {
-    font-size: 10pt !important;
+    font-size: 8pt !important;
     font-weight: 700 !important;
     background: #ccc !important;
     text-align: center !important;
@@ -288,21 +288,21 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
   }
 
   /* Proporciones de columnas */
-  .col-num   { width: 7% !important; text-align: center !important; font-weight: 700 !important; font-size: 10pt !important; }
-  .col-desc  { width: 38% !important; font-size: 10pt !important; }
-  .col-asp   { width: 43% !important; font-size: 10pt !important; }
-  .col-fecha { width: 12% !important; text-align: center !important; font-size: 10pt !important; white-space: normal !important; }
+  .col-num   { width: 7% !important; text-align: center !important; font-weight: 700 !important; font-size: 8pt !important; }
+  .col-desc  { width: 38% !important; font-size: 8pt !important; }
+  .col-asp   { width: 43% !important; font-size: 8pt !important; }
+  .col-fecha { width: 12% !important; text-align: center !important; font-size: 8pt !important; white-space: normal !important; }
 
   .aspecto-linea { display: flex !important; justify-content: space-between !important; gap: 2px !important; }
-  .aspecto-nombre { font-size: 10pt !important; flex: 1 !important; }
-  .aspecto-pts    { font-size: 10pt !important; font-weight: 700 !important; white-space: nowrap !important; }
+  .aspecto-nombre { font-size: 8pt !important; flex: 1 !important; }
+  .aspecto-pts    { font-size: 8pt !important; font-weight: 700 !important; white-space: nowrap !important; }
 
   .total-linea { margin-top: 1px !important; padding-top: 1px !important; border-top: 0.5px solid #aaa !important; }
-  .total-label { font-size: 10pt !important; }
-  .total-num   { font-size: 10pt !important; font-weight: 800 !important; }
+  .total-label { font-size: 8pt !important; }
+  .total-num   { font-size: 8pt !important; font-weight: 800 !important; }
 
   .tr-resumen td {
-    font-size: 10pt !important;
+    font-size: 8pt !important;
     font-weight: 700 !important;
     background: #ddd !important;
     padding: 1px 2px !important;
