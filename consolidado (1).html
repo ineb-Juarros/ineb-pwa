@@ -177,23 +177,15 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
   }
 
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { background: #fff !important; font-size: 9px !important; }
+  body { background: #fff !important; font-size: 10pt !important; }
 
   /* ===== OCULTAR UI ===== */
   .app-bar, .config-panel, .stats-bar, .maestros-grid,
   .preview-label, .hoja-label, #toast,
   a[href="index.html"] { display: none !important; }
 
-  .inst-header {
-    padding: 4px 8px !important;
-    border-bottom: 2px solid #1b3a2d !important;
-    margin-bottom: 3mm !important;
-    box-shadow: none !important;
-  }
-  .inst-header img { height: 12mm !important; }
-  .inst-header-txt .n1 { font-size: 9px !important; line-height: 1.2 !important; }
-  .inst-header-txt .n2 { font-size: 9px !important; margin-top: 1px !important; }
-  .linea-dorada { height: 1px !important; margin-bottom: 2mm !important; }
+  /* Ocultar encabezado fijo del HTML — solo se imprime el de cada hoja */
+  .inst-header, .linea-dorada { display: none !important; }
 
   .main-wrap { padding: 0 !important; max-width: 100% !important; }
   #zona-reporte { display: block !important; }
@@ -218,13 +210,13 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
   }
   .hoja-label { display: none !important; }
 
-  /* ===== GRID 2 COLUMNAS EN PORTRAIT ===== */
+  /* ===== UNA COLUMNA POR HOJA — texto más legible ===== */
   .grid-hoja {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2mm 3mm !important;
-    align-items: start !important;
+    display: block !important;
     width: 100% !important;
+  }
+  .bloque-maestro {
+    margin-bottom: 8mm !important;
   }
 
   /* ===== BLOQUE DE CADA MAESTRO ===== */
@@ -248,7 +240,7 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
     width: 100% !important;
     border-collapse: collapse !important;
     margin-bottom: 1px !important;
-    font-size: 9px !important;
+    font-size: 10pt !important;
     table-layout: fixed !important;
   }
   .enc-bloque td {
@@ -261,18 +253,18 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
   .enc-label {
     background: #d5d5d5 !important;
     font-weight: 700 !important;
-    font-size: 9px !important;
+    font-size: 10pt !important;
     text-transform: uppercase !important;
     white-space: nowrap !important;
   }
-  .enc-val { font-weight: 500 !important; font-size: 9px !important; }
+  .enc-val { font-weight: 500 !important; font-size: 10pt !important; }
 
   /* ===== TABLA DE ACTIVIDADES ===== */
   .tabla-reporte {
     width: 100% !important;
     border-collapse: collapse !important;
     table-layout: fixed !important;
-    font-size: 9px !important;
+    font-size: 10pt !important;
     border: 0.75px solid #444 !important;
     box-shadow: none !important;
   }
@@ -285,7 +277,7 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
     vertical-align: top !important;
   }
   .th-col {
-    font-size: 9px !important;
+    font-size: 10pt !important;
     font-weight: 700 !important;
     background: #ccc !important;
     text-align: center !important;
@@ -295,21 +287,21 @@ body { font-family: "DM Sans", sans-serif; background: var(--gris); color: var(-
   }
 
   /* Proporciones de columnas */
-  .col-num   { width: 7% !important; text-align: center !important; font-weight: 700 !important; font-size: 9px !important; }
-  .col-desc  { width: 38% !important; font-size: 9px !important; }
-  .col-asp   { width: 43% !important; font-size: 9px !important; }
-  .col-fecha { width: 12% !important; text-align: center !important; font-size: 9px !important; white-space: normal !important; }
+  .col-num   { width: 7% !important; text-align: center !important; font-weight: 700 !important; font-size: 10pt !important; }
+  .col-desc  { width: 38% !important; font-size: 10pt !important; }
+  .col-asp   { width: 43% !important; font-size: 10pt !important; }
+  .col-fecha { width: 12% !important; text-align: center !important; font-size: 10pt !important; white-space: normal !important; }
 
   .aspecto-linea { display: flex !important; justify-content: space-between !important; gap: 2px !important; }
-  .aspecto-nombre { font-size: 9px !important; flex: 1 !important; }
-  .aspecto-pts    { font-size: 9px !important; font-weight: 700 !important; white-space: nowrap !important; }
+  .aspecto-nombre { font-size: 10pt !important; flex: 1 !important; }
+  .aspecto-pts    { font-size: 10pt !important; font-weight: 700 !important; white-space: nowrap !important; }
 
   .total-linea { margin-top: 1px !important; padding-top: 1px !important; border-top: 0.5px solid #aaa !important; }
-  .total-label { font-size: 9px !important; }
-  .total-num   { font-size: 9px !important; font-weight: 800 !important; }
+  .total-label { font-size: 10pt !important; }
+  .total-num   { font-size: 10pt !important; font-weight: 800 !important; }
 
   .tr-resumen td {
-    font-size: 9px !important;
+    font-size: 10pt !important;
     font-weight: 700 !important;
     background: #ddd !important;
     padding: 1px 2px !important;
