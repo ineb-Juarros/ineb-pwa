@@ -480,7 +480,10 @@ function cargarDatos(silencioso = false) {
     if (Array.isArray(data)) {
       // Reemplazar lista completa con lo que viene del servidor
       // Esto garantiza que si se borró algo en Sheets, desaparece aquí también
-      maestros = data.filter(d => d && d.catedratico).slice(0, TOTAL_SLOTS);
+      // Reemplazar completamente con datos del servidor sin límite
+      maestros = data.filter(d => d && d.catedratico);
+      // Limpiar storage viejo y guardar datos frescos
+      localStorage.removeItem(STORAGE_KEY);
       guardarEnStorage();
       renderUI();
       mostrarToast('\u2705 ' + maestros.length + ' planificaci\u00f3n(es) en el servidor');
